@@ -9,18 +9,20 @@
     }
     // .match(/commit\/([0-9a-z]+)/)[1]
 
+    out.config.MODULE.DOWNLOAD = "https://raw.githubusercontent.com/RGFTheCoder/EMCatModules/master/emcat-module-${}/index.js";
+
     let loadedCode = {};
 
-    (async function () {
+    // (async function () {
 
-        fetch("https://github.com/RGFTheCoder/EMCatModules/commits/master",{
-            mode: "no-cors"
-        })
-            .then((res) => res.text())
-            .then((txt) => {
-                out.config.MODULE.COMMIT = txt.match(/commit\/([0-9a-z]+)/)[1];
-            });
-    })();
+    //     fetch("https://github.com/RGFTheCoder/EMCatModules/commits/master",{
+    //         mode: "no-cors"
+    //     })
+    //         .then((res) => res.text())
+    //         .then((txt) => {
+    //             out.config.MODULE.COMMIT = txt.match(/commit\/([0-9a-z]+)/)[1];
+    //         });
+    // })();
 
     /**
      * Loads a commonjs module.
