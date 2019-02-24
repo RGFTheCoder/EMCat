@@ -13,7 +13,7 @@
 
     (async function () {
 
-        fetch("https://github.com/RGFTheCoder/EMCat/commits/master")
+        fetch("https://github.com/RGFTheCoder/EMCatModules/commits/master")
             .then((res) => res.text())
             .then((txt) => {
                 out.config.MODULE.COMMIT = txt.match(/commit\/([0-9a-z]+)/)[1];
