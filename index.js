@@ -37,6 +37,7 @@
      * Loads a emcat module.
      *
      * @param {string} modName - The name of the module
+     * @param {string} saveName - The id to save the module in. Default to modName
      * @return {number} Error code. 0 means no error
      *
      * @example
@@ -47,9 +48,10 @@
      *
      *     use `template`
      */
-    out.use = function (modName) {
+    out.use = function (modName, saveName) {
+        saveName = saveName || modName;
         let codeLink = `https://raw.githubusercontent.com/RGFTheCoder/EMCatModules/master/emcat-module-${modName}/index.js`;
-        out[modName] = window.require(codeLink);
+        out[saveName] = window.require(codeLink);
         return 0;
     }
 
