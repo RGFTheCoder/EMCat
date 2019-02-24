@@ -50,7 +50,7 @@
      */
     out.use = function (modName, saveName) {
         saveName = saveName || modName;
-        let codeLink = `https://raw.githubusercontent.com/RGFTheCoder/EMCatModules/master/emcat-module-${modName}/index.js`;
+        let codeLink = `https://rgfthecoder.github.io/EMCatModules/emcat-module-${modName}/index.js`;
         out[saveName] = window.require(codeLink);
         return 0;
     }
