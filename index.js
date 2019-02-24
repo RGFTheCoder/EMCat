@@ -49,7 +49,7 @@
      */
     out.use = function (modName) {
         let codeLink = `https://raw.githubusercontent.com/RGFTheCoder/EMCatModules/master/emcat-module-${modName}/index.js`;
-        out[modName] = win.require(codeLink);
+        out[modName] = window.require(codeLink);
         return 0;
     }
 
