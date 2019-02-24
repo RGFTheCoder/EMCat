@@ -2,12 +2,23 @@
     const out = window.em = window.emcat = {};
 
     out.config = {
-        links: {
-            MODULE_DOWNLOAD: "https://cdn.jsdelivr.net/gh/RGFTheCoder/EMCatModules/emcat-module-${}/index.js"
+        MODULE: {
+            DOWNLOAD: "https://cdn.jsdelivr.net/gh/RGFTheCoder/EMCatModules/emcat-module-${}/index.js",
+            COMMIT: "097d40a09d14f06570b6d7b48123c0aa77154b74"
         }
     }
+    // .match(/commit\/([0-9a-z]+)/)[1]
 
     let loadedCode = {};
+
+    (async function () {
+
+        fetch("https://github.com/RGFTheCoder/EMCat/commits/master")
+            .then((res) => res.text())
+            .then((txt) => {
+                out.config.MODULE.COMMIT = txt.match(/commit\/([0-9a-z]+)/)[1];
+            });
+    })();
 
     /**
      * Loads a commonjs module.
@@ -56,7 +67,7 @@
      */
     out.use = function (modName, saveName) {
         saveName = saveName || modName;
-        let codeLink = out.config.links.MODULE_DOWNLOAD.replace("${}", modName);
+        let codeLink = out.config.MODULE.DOWNLOAD.replace("${}", modName);
         out[saveName] = window.require(codeLink);
         return 0;
     }
