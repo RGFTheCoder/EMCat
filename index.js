@@ -1,6 +1,12 @@
 (function () {
     const out = window.em = window.emcat = {};
 
+    out.config = {
+        links: {
+            MODULE_DOWNLOAD: "https://cdn.jsdelivr.net/gh/RGFTheCoder/EMCatModules/emcat-module-${}/index.js"
+        }
+    }
+
     let loadedCode = {};
 
     /**
@@ -50,7 +56,7 @@
      */
     out.use = function (modName, saveName) {
         saveName = saveName || modName;
-        let codeLink = `https://cdn.jsdelivr.net/gh/RGFTheCoder/EMCatModules/emcat-module-${modName}/index.js`;
+        let codeLink = out.config.links.MODULE_DOWNLOAD.replace("${}", modName);
         out[saveName] = window.require(codeLink);
         return 0;
     }
